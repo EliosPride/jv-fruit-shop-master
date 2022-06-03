@@ -2,14 +2,14 @@ package core.basesyntax.entity;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
-import core.basesyntax.converter.ContentTypeEnumConverter;
+import core.basesyntax.converter.OperationConverter;
 
 public class FruitTransaction {
-    @CsvCustomBindByName(converter = ContentTypeEnumConverter.class)
+    @CsvCustomBindByName(converter = OperationConverter.class)
     private Operation type;
-    @CsvBindByName(column = "fruit")
+    @CsvBindByName
     private String fruit;
-    @CsvBindByName(column = "quantity")
+    @CsvBindByName
     private Integer quantity;
 
     public Operation getType() {

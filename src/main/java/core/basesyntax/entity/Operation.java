@@ -12,7 +12,7 @@ public enum Operation {
         this.operation = operation;
     }
 
-    public static Operation fromString(String operation) {
+    public static Operation element(String operation) {
         for (Operation b : Operation.values()) {
             if (b.operation.equalsIgnoreCase(operation)) {
                 return b;
