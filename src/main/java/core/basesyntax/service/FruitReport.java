@@ -25,18 +25,4 @@ public class FruitReport {
     public Integer getFruitAmount() {
         return fruitAmount;
     }
-
-    @Override
-    public String toString() {
-        return "FruitReport{" +
-                "fruitName='" + fruitName + '\'' +
-                ", fruitAmount=" + fruitAmount +
-                '}';
-    }
-
-    public static List<FruitReport> getFruitReport() {
-        return FruitStorage.FRUIT_STORAGE.stream()
-                .map(x -> new FruitReport(x.getName(), x.getAmount()))
-                .collect(Collectors.toList());
-    }
 }

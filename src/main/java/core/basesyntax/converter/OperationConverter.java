@@ -6,6 +6,6 @@ import core.basesyntax.entity.Operation;
 public class OperationConverter extends AbstractBeanField<Operation> {
     @Override
     protected Object convert(String s) {
-        return Operation.element(s);
+        return Operation.fromString(s);
     }
 }

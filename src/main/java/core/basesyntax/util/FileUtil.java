@@ -6,6 +6,7 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+import core.basesyntax.db.FruitStorage;
 import core.basesyntax.entity.FruitTransaction;
 import core.basesyntax.service.FruitReport;
 
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileUtil {
     private static final String OUTPUT_FILE = "src/main/resources/fruitReport.csv";
@@ -37,9 +39,15 @@ public class FileUtil {
             StatefulBeanToCsv<FruitReport> sbc = new StatefulBeanToCsvBuilder<FruitReport>(writer)
                     .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                     .build();
-            sbc.write(FruitReport.getFruitReport());
+            sbc.write(FileUtil.getFruitReport());
         } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
             System.out.println("error occurred during writing file");
         }
+    }
+
+    public static List<FruitReport> getFruitReport() {
+        return FruitStorage.FRUIT_STORAGE.stream()
+                .map(x -> new FruitReport(x.getName(), x.getAmount()))
+                .collect(Collectors.toList());
     }
 }

@@ -9,9 +9,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        FileUtil.readFruitTransactions();
-
-        FruitProcessor.process();
+        FileUtil.readFruitTransactions().forEach(FruitProcessor::process);
 
         FileUtil.generateFruitReport();
     }
