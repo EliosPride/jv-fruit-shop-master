@@ -9,10 +9,8 @@ import java.util.List;
 
 public class FruitProcessor {
 
-    public void process() {
-        String inputFile = "src/main/resources/fruitShop.csv";
-        List<FruitTransaction> fruitTransactionList = FileUtil.readFruitTransactions(inputFile);
-        fruitTransactionList.forEach(x -> {
+    public static void process() {
+        FileUtil.readFruitTransactions().forEach(x -> {
             switch (x.getType()) {
                 case BALANCE -> FruitStorage.FRUIT_STORAGE.add(new Fruit(x.getFruit(), x.getQuantity()));
                 case SUPPLY, RETURN -> FruitStorage.getByName(x.getFruit())

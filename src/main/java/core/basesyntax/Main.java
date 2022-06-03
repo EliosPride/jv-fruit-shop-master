@@ -8,12 +8,10 @@ import core.basesyntax.util.FileUtil;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
-        String inputFileName = "src/main/resources/fruitShop.csv";
-        FileUtil.readFruitTransactions(inputFileName);
+    public static void main(String[] args) {
+        FileUtil.readFruitTransactions();
 
-        FruitProcessor fruitOperationGenerator = new FruitProcessor();
-        fruitOperationGenerator.process();
+        FruitProcessor.process();
 
         FileUtil.generateFruitReport();
     }
